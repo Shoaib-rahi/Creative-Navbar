@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing:border-box;
+    }
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #06021b;
+    }
+    .navigation{
+      position: relative;
+        width: 400px;
+        height: 80px;
+        background:linear-gradient(45deg,#2196f3,#e91e63);
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .navigation ul{
+        width: 350;
+        display: flex;      
+    }
+    .navigation ul li {
+      position: relative;
+      width: 70px;
+      height: 80px;
+      list-style: none;
+    }
+    .navigation ul li a{
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+      text-align: center;
+      font-weight: 500;
+      line-height: 85px;
+    }
+    .navigation ul li a .icon{
+      font-size: 1.8rem;
+       font-weight: 500;
+       transition: .5s;
+       display: block;
+       z-index: 1;
+       color: #fff;
+    }
+
+    .navigation ul li.active a .icon{
+      transform: translateY(-40px);
+    }
+    .navigation ul li a .text{
+      position: absolute;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all .5s;
+      font-size: 1rem;
+      color: #fff;
+    }
+    .navigation ul li.active a .text{
+      opacity: 1;
+      transform: translateY(10px);
+    }
+   .indicator{
+    width: 80px;
+    height: 80px;
+    background:  linear-gradient(45deg ,#e91e63,#2196f3);
+    position: absolute;
+    border-radius: 50%;
+    border: 8px solid #06021b;
+    top: -50%;
+    display: grid;
+    place-items: center;
+    display: flex;
+    justify-content: center;
+    transition: all .5s;
+    align-items: center;
+   }
+   /* .navigation ul li a .circle{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid white;
+    top: -30px;
+    left: 10px;
+    z-index: 2;
+   } */
+
+   .indicator::before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -28px;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border-top-right-radius: 50%;
+    box-shadow: 1px -10px 0 #06021b;
+   }
+   .indicator::after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -28px;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border-top-left-radius: 50%;
+    box-shadow: -1px -10px 0 #06021b;
+   }
+   .navigation ul li:nth-child(1).active ~ .indicator{
+transform: translateX(calc(70px * 0));
+   }
+   .navigation ul li:nth-child(2).active ~ .indicator{
+transform: translateX(calc(70px * 1));
+   }
+   .navigation ul li:nth-child(3).active ~ .indicator{
+transform: translateX(calc(70px * 2));
+   }
+   .navigation ul li:nth-child(4).active ~ .indicator{
+transform: translateX(calc(70px * 3));
+   }
+   .navigation ul li:nth-child(5).active ~ .indicator{
+transform: translateX(calc(70px * 4));
+   }
+  </style>
+  <body>
+    <div class="navigation">
+      <ul>
+        <li class="list active">
+          <a href="#">
+            <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+            <span class="text">Home</span>
+            <span class="circle"></span>
+        </a>
+        </li>
+        <li class="list">
+            <a href="#">
+              <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+              <span class="text">Profile</span>
+              <span class="circle"></span>
+          </a>
+          </li>
+          <li class="list">
+            <a href="#">
+              <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
+              <span class="text">Setting</span>
+              <span class="circle"></span>
+          </a>
+          </li>
+          <li class="list">
+            <a href="#">
+              <span class="icon"><ion-icon name="camera-outline"></ion-icon></span>
+              <span class="text">Photos</span>
+              <span class="circle"></span>
+          </a>
+          </li>
+          <li class="list">
+            <a href="#">
+              <span class="icon"><ion-icon name="wallet-outline"></ion-icon></span>
+              <span class="text">Messages</span>
+              <span class="circle"></span>
+          </a>
+          </li>
+          <div class="indicator">
+
+          </div>
+      </ul>
+    </div>
+<script>
+  let list = document.querySelectorAll(".list"); 
+
+  function activeLink(){
+    list.forEach((item) => 
+      item.classList.remove("active"))
+    this.classList.add("active")
+  }
+
+  list.forEach((item) => {
+    item.addEventListener("click",activeLink)
+  })
+</script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  </body>
+</html>
